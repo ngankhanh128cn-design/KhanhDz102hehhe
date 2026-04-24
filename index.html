@@ -23,7 +23,7 @@
         }
         .illustration-box {
             width: 100%; height: 380px; margin: 15px 0; border-radius: 25px; overflow: hidden; background: #fff;
-            display: flex; justify-content: center; align-items: center; border: 2px solid #eee;
+            display: flex; justify-content: center; align-items: center;
         }
         .illustration-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
@@ -41,14 +41,13 @@
 </head>
 <body>
 
-<div class="decor cloud" style="top: 10%; animation-delay: 0s;">☁️</div>
+<div class="decor cloud" style="top: 10%;">☁️</div>
 <div class="decor cloud" style="top: 25%; animation-delay: -7s;">☁️</div>
 <div class="decor tree-left">🌿</div>
 <div class="decor tree-right">🌴</div>
 
 <div id="overlay">
     <div style="font-size: 120px; margin-bottom: 20px;">🦈💐</div>
-    <p style="font-size: 20px; color: #666;">(Nhạc đã chỉnh mức 0.4 siêu êm)</p>
     <button id="start-btn">BẮT ĐẦU ✨</button>
 </div>
 
@@ -68,7 +67,7 @@
 </div>
 
 <script>
-    // Dùng đúng tên file bạn đã có để chắc chắn nó hiện "thật"
+    // GitHub sẽ nhận diện được nếu bạn upload các file này lên cùng thư mục với index.html
     const slides = [
         { title: "MỞ ĐẦU", img: "image_958a1f.jpg", text: "Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ nói về quy trình làm ra Thủy Tinh!" },
         { title: "THỦY TINH LÀ GÌ?", img: "image_951237.png", text: "Thủy tinh là chất rắn vô định hình, trong suốt và cứng nhưng rất dễ vỡ. 💎" },
@@ -106,7 +105,7 @@
     
     document.getElementById('start-btn').onclick = () => {
         document.getElementById('overlay').style.display = 'none';
-        music.volume = 0.4; // Giảm xuống 0.4 cực êm theo ý Khánh
+        music.volume = 0.15; // Giữ mức 0.15 cho ổn định
         music.play();
         update();
     };
