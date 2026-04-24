@@ -3,69 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thuyết Trình Thủy Tinh - Ngân Khánh Chill</title>
+    <title>Thuyết Trình Thủy Tinh - Ngân Khánh</title>
     <style>
         body, html {
             margin: 0; padding: 0; height: 100%; overflow: hidden;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 10s ease infinite;
+            background: linear-gradient(135deg, #a2d2ff 0%, #c9bbff 100%);
             display: flex; justify-content: center; align-items: center;
         }
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
 
-        /* Trang trí cây cối và mây */
-        .decor-item { position: absolute; pointer-events: none; z-index: 1; }
-        .tree-left { bottom: 0; left: -20px; font-size: 150px; opacity: 0.9; }
-        .tree-right { bottom: 0; right: -20px; font-size: 120px; opacity: 0.8; }
-        .cloud { font-size: 60px; color: white; opacity: 0.7; animation: moveCloud 20s linear infinite; }
-        @keyframes moveCloud {
-            from { transform: translateX(-100vw); }
-            to { transform: translateX(100vw); }
-        }
+        /* Decor mây và cây */
+        .decor { position: absolute; pointer-events: none; z-index: 1; }
+        .tree-left { bottom: -10px; left: -10px; font-size: 140px; opacity: 0.8; }
+        .tree-right { bottom: -10px; right: -10px; font-size: 110px; opacity: 0.7; }
+        .cloud { font-size: 50px; color: white; opacity: 0.6; animation: moveCloud 25s linear infinite; }
+        @keyframes moveCloud { from { transform: translateX(-100vw); } to { transform: translateX(100vw); } }
 
         #slide-card {
-            width: 85%; max-width: 650px; background: rgba(255, 255, 255, 0.9);
-            border-radius: 40px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            width: 85%; max-width: 600px; background: rgba(255, 255, 255, 0.95);
+            border-radius: 40px; padding: 30px; box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             text-align: center; z-index: 10; position: relative; border: 5px solid #fff;
         }
-        .illust-box { font-size: 80px; margin-bottom: 20px; background: #e0f7fa; border-radius: 50%; width: 140px; height: 140px; line-height: 140px; margin: 0 auto 20px; }
-        h1 { color: #0097a7; font-size: 1.8em; margin-bottom: 15px; }
-        p { font-size: 1.2em; line-height: 1.6; color: #444; min-height: 120px; }
-        
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
-        .nav-btn {
-            background: #00bcd4; color: white; border: none; padding: 12px 25px;
-            border-radius: 25px; cursor: pointer; font-weight: bold; transition: 0.3s;
-        }
-        .nav-btn:hover { background: #0097a7; transform: translateY(-3px); }
 
-        /* Màn hình chờ */
-        #start-overlay {
-            position: fixed; top:0; left:0; width:100%; height:100%; background:white;
+        .gura-box {
+            width: 150px; height: 150px; margin: 0 auto 20px;
+            border-radius: 50%; overflow: hidden; border: 5px solid #e0f7fa;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .gura-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        h1 { color: #00838f; font-size: 1.6em; margin-bottom: 10px; text-transform: uppercase; }
+        p { font-size: 1.1em; line-height: 1.6; color: #333; min-height: 100px; }
+        
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .nav-btn {
+            background: #4fc3f7; color: white; border: none; padding: 10px 25px;
+            border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.3s;
+        }
+        .nav-btn:hover { background: #0288d1; transform: scale(1.05); }
+
+        #overlay {
+            position: fixed; top:0; left:0; width:100%; height:100%; background: white;
             z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #start-btn {
-            padding: 15px 40px; font-size: 22px; border-radius: 35px; border:none;
-            background: #e91e63; color:white; cursor:pointer; font-weight:bold; box-shadow: 0 10px 20px rgba(233,30,99,0.3);
+            padding: 18px 45px; font-size: 22px; border-radius: 40px; border:none;
+            background: #ff4081; color:white; cursor:pointer; font-weight:bold;
+            box-shadow: 0 8px 20px rgba(255,64,129,0.4);
         }
     </style>
 </head>
 <body>
 
-<div class="decor-item tree-left">🌿</div>
-<div class="decor-item tree-right">🌴</div>
-<div class="decor-item cloud" style="top: 10%;">☁️</div>
-<div class="decor-item cloud" style="top: 20%; animation-delay: -5s;">☁️</div>
+<div class="decor tree-left">🌿</div>
+<div class="decor tree-right">🌴</div>
+<div class="decor cloud" style="top: 10%;">☁️</div>
+<div class="decor cloud" style="top: 20%; animation-delay: -5s;">☁️</div>
 
-<div id="start-overlay">
-    <div style="font-size: 100px; margin-bottom: 20px;">🦈</div>
-    <button id="start-btn">BẮT ĐẦU CHILL ✨</button>
+<div id="overlay">
+    <div style="font-size: 80px; margin-bottom: 20px;">🦈💙</div>
+    <button id="start-btn">BẮT ĐẦU THUYẾT TRÌNH</button>
 </div>
 
 <audio id="bgMusic" loop>
@@ -73,27 +70,26 @@
 </audio>
 
 <div id="slide-card">
-    <div id="illust" class="illust-box">🦈</div>
-    <h1 id="title">Trang 1: Xin chào!</h1>
-    <p id="text">Bấm nút để nghe nhạc và thuyết trình nhé!</p>
+    <div class="gura-box">
+        <img src="https://i.ibb.co/VmxM4Gf/image-a415a0.jpg" alt="Gura">
+    </div>
+    <h1 id="title">Trang 1: Mở Đầu</h1>
+    <p id="text">...</p>
     <div class="btn-group">
         <button class="nav-btn" id="prevBtn">Quay lại</button>
         <button class="nav-btn" id="nextBtn">Tiếp theo</button>
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: #e91e63;">Hoàng Ngân Khánh</div>
+    <div style="margin-top: 15px; font-weight: bold; color: #00838f;">Hoàng Ngân Khánh</div>
 </div>
 
 <script>
     const slides = [
-        { illust: "🦈", title: "TRANG 1: MỞ ĐẦU", text: "Xin chào thầy cô và các bạn. Mình là Hoàng Ngân Khánh. Hôm nay mình sẽ nói về quá trình sản xuất thủy tinh, một vật liệu cực kỳ quen thuộc!" },
-        { illust: "💎", title: "Thủy tinh là gì?", text: "Thủy tinh là chất rắn vô định hình, trong suốt và rất đẹp nhưng cũng rất dễ vỡ nếu không cẩn thận." },
-        { illust: "🏙️", title: "Ứng dụng", text: "Từ ly nước đến màn hình điện thoại, thủy tinh có mặt ở khắp mọi nơi xung quanh chúng ta." },
-        { illust: "🏜️", title: "Nguyên liệu", text: "Thành phần chính là Cát Thạch Anh, kết hợp với Sô-đa và Đá Vôi để tạo ra hỗn hợp hoàn hảo." },
-        { illust: "🔥", title: "Nung chảy", text: "Hỗn hợp được nung ở nhiệt độ 1600 độ C để chảy ra thành thủy tinh lỏng đỏ rực." },
-        { illust: "🏺", title: "Tạo hình", text: "Người ta thổi, ép hoặc kéo thủy tinh lỏng để tạo ra các hình dáng chai lọ khác nhau." },
-        { illust: "🌡️", title: "Ủ làm nguội", text: "Cần làm nguội thật chậm để thủy tinh không bị nứt vỡ đột ngột. Đây là bước rất quan trọng." },
-        { illust: "♻️", title: "Tái chế", text: "Thủy tinh có thể tái chế mãi mãi, giúp bảo vệ môi trường xanh sạch đẹp!" },
-        { illust: "💖", title: "Lời kết", text: "Cảm ơn mọi người đã lắng nghe bài thuyết trình của Ngân Khánh. Chúc mọi người một ngày thật chill!" }
+        { title: "CHÀO MỪNG MỌI NGƯỜI!", text: "Xin chào thầy cô và các bạn. Mình là Hoàng Ngân Khánh. Hôm nay mình rất vui được thuyết trình về quá trình sản xuất thủy tinh. Mời mọi người cùng theo dõi nhé!" },
+        { title: "Thủy tinh là gì?", text: "Thủy tinh là một chất rắn vô định hình cực kỳ đặc biệt. Nó trong suốt, cứng nhưng lại rất dễ vỡ nếu chúng ta không nâng niu." },
+        { title: "Nguyên liệu chính", text: "Bí mật nằm ở Cát Thạch Anh! Ngoài ra còn có sô-đa và đá vôi được pha trộn theo tỉ lệ hoàn hảo để tạo nên độ bền." },
+        { title: "Nung chảy thần kỳ", text: "Hỗn hợp được nung ở nhiệt độ cực cao, lên tới 1600 độ C để trở thành một dòng dung dịch lỏng đỏ rực như nham thạch." },
+        { title: "Tạo hình khéo léo", text: "Lúc này, người thợ sẽ thổi hoặc ép khuôn để tạo ra chai lọ, bóng đèn hoặc những tấm kính phẳng lung linh." },
+        { title: "Lời kết", text: "Cảm ơn thầy cô và các bạn đã lắng nghe bài thuyết trình của mình. Nếu có sai sót thì cho mình thêm góp ý. Chúc mọi người một ngày thật vui vẻ!" }
     ];
 
     let current = 0;
@@ -103,13 +99,12 @@
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(txt);
         msg.lang = 'vi-VN';
-        msg.rate = 1.4; // Tốc độ nhanh theo ý Khánh
+        msg.rate = 1.4; 
         window.speechSynthesis.speak(msg);
     }
 
     function update() {
         const s = slides[current];
-        document.getElementById('illust').innerText = s.illust;
         document.getElementById('title').innerText = s.title;
         document.getElementById('text').innerText = s.text;
         speak(s.text);
@@ -119,10 +114,10 @@
     document.getElementById('prevBtn').onclick = () => { if(current > 0) { current--; update(); } };
 
     document.getElementById('start-btn').onclick = () => {
-        document.getElementById('start-overlay').style.display = 'none';
-        music.volume = 0.4;
+        document.getElementById('overlay').style.display = 'none';
+        music.volume = 0.05; // Nhạc nhỏ thoang thoảng như Khánh muốn
         music.play();
-        update();
+        update(); // Bấm cái là Gura nói luôn
     };
 </script>
 </body>
