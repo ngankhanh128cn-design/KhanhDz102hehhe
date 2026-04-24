@@ -7,12 +7,12 @@
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #a2d2ff 0%, #c9bbff 100%); display: flex; justify-content: center; align-items: center; }
         
-        /* Hiệu ứng mây bay */
+        /* Đám mây bay */
         .decor { position: absolute; pointer-events: none; z-index: 1; }
         .cloud { font-size: 60px; color: white; opacity: 0.7; animation: moveCloud 25s linear infinite; }
         @keyframes moveCloud { from { transform: translateX(-100vw); } to { transform: translateX(100vw); } }
 
-        /* Cây cối trang trí */
+        /* Cây trang trí */
         .tree-left { bottom: -10px; left: -10px; font-size: 140px; opacity: 0.8; z-index: 5; }
         .tree-right { bottom: -10px; right: -10px; font-size: 110px; opacity: 0.7; z-index: 5; }
 
@@ -22,21 +22,21 @@
             text-align: center; z-index: 10; position: relative; border: 8px solid #fff;
         }
         .illustration-box {
-            width: 100%; height: 380px; margin: 15px 0; border-radius: 25px; overflow: hidden; background: #fff;
-            display: flex; justify-content: center; align-items: center;
+            width: 100%; height: 400px; margin: 15px 0; border-radius: 25px; overflow: hidden; background: #f9f9f9;
+            display: flex; justify-content: center; align-items: center; border: 2px dashed #ddd;
         }
         .illustration-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
         
-        h1 { color: #00838f; font-size: 3em; margin: 5px 0; text-transform: uppercase; }
-        #text-container { font-size: 2.3em; line-height: 1.4; color: #222; min-height: 160px; font-weight: bold; padding: 0 20px; display: flex; align-items: center; justify-content: center; }
+        h1 { color: #00838f; font-size: 3.2em; margin: 5px 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
+        #text-container { font-size: 2.5em; line-height: 1.4; color: #222; min-height: 160px; font-weight: bold; padding: 0 20px; display: flex; align-items: center; justify-content: center; }
         
         .btn-group { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
-        .nav-btn { background: #4fc3f7; color: white; border: none; padding: 15px 50px; border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.6em; transition: 0.3s; }
+        .nav-btn { background: #4fc3f7; color: white; border: none; padding: 15px 50px; border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.8em; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .nav-btn:hover { background: #0288d1; transform: scale(1.05); }
         .hidden { display: none !important; }
 
         #overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: white; z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; }
-        #start-btn { padding: 25px 70px; font-size: 35px; border-radius: 60px; border:none; background: #ff4081; color:white; cursor:pointer; font-weight: bold; }
+        #start-btn { padding: 25px 70px; font-size: 35px; border-radius: 60px; border:none; background: #ff4081; color:white; cursor:pointer; font-weight: bold; box-shadow: 0 10px 25px rgba(255,64,129,0.3); }
     </style>
 </head>
 <body>
@@ -58,26 +58,26 @@
 
 <div id="slide-card">
     <h1 id="title">Trang 1</h1>
-    <div class="illustration-box"><img id="main-img" src="" alt="Đang tải..."></div>
+    <div class="illustration-box"><img id="main-img" src="" alt="Đang tải ảnh thật..."></div>
     <div id="text-container"><p id="text">...</p></div>
     <div class="btn-group">
         <button class="nav-btn" id="prevBtn">Quay lại</button>
         <button class="nav-btn" id="nextBtn">Tiếp theo</button>
     </div>
-    <div style="margin-top: 15px; font-weight: bold; color: #00838f; font-size: 1.3em;">Hoàng Ngân Khánh 🦈</div>
+    <div style="margin-top: 15px; font-weight: bold; color: #00838f; font-size: 1.4em;">Hoàng Ngân Khánh 🦈</div>
 </div>
 
 <script>
     const slides = [
-        { title: "MỞ ĐẦU", img: "https://i.postimg.cc/8z8pX334/image-958a1f.jpg", text: "Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ thuyết trình về quy trình làm ra Thủy Tinh!" },
-        { title: "THỦY TINH LÀ GÌ?", img: "https://i.postimg.cc/mD700zS3/image-951237.png", text: "Thủy tinh là chất rắn vô định hình, trong suốt và cứng nhưng rất dễ vỡ. 💎" },
-        { title: "ỨNG DỤNG", img: "https://i.postimg.cc/0jXmH1F3/image-951505.jpg", text: "Nó được dùng làm ly chén, cửa kính, màn hình điện thoại và thiết bị y tế. 📱" },
-        { title: "NGUYÊN LIỆU", img: "https://i.postimg.cc/85z1xG6x/image-95153c.png", text: "Nguyên liệu chính là Cát thạch anh, kết hợp với Sô-đa và Đá vôi. 🏖️" },
-        { title: "NUNG CHẢY", img: "https://i.postimg.cc/XvL4vXfD/image-951924.jpg", text: "Hỗn hợp được nung ở 1600 độ C để trở thành dạng lỏng nóng chảy. 🔥" },
-        { title: "TẠO HÌNH", img: "https://i.postimg.cc/4N5V0xkz/image-95195b.png", text: "Người ta thổi hoặc ép khuôn thủy tinh lỏng để tạo ra những hình dáng mong muốn. 🫧" },
-        { title: "HOÀN THIỆN", img: "https://i.postimg.cc/q7SjG8mY/image-956f54.jpg", text: "Sau khi làm nguội và mài bóng, chúng ta có sản phẩm thủy tinh hoàn chỉnh. ✨" },
-        { title: "TÁI CHẾ 🌱", img: "https://i.postimg.cc/zXp9L0S1/image-9573b3.jpg", text: "Thủy tinh có thể tái chế vô số lần, giúp bảo vệ môi trường xanh của chúng ta! ♻️" },
-        { title: "LỜI KẾT", img: "https://i.postimg.cc/m26M5WqK/image-948712.jpg", text: "Cảm ơn mọi người đã lắng nghe! Chúc các bạn một ngày thật tuyệt vời! 💐" }
+        { title: "MỞ ĐẦU", img: "https://r4.wallpaperflare.com/wallpaper/32/342/630/gawr-gura-hololive-anime-girls-shark-girl-digital-art-hd-wallpaper-d8262d98d020ec08d08c51de50f1d63d.jpg", text: "Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ nói về quy trình làm ra Thủy Tinh!" },
+        { title: "THỦY TINH LÀ GÌ?", img: "https://plus.unsplash.com/premium_photo-1670359143813-f93539097723?q=80&w=1000&auto=format&fit=crop", text: "Thủy tinh là chất rắn vô định hình, trong suốt và cứng nhưng rất dễ vỡ. 💎" },
+        { title: "ỨNG DỤNG", img: "https://images.unsplash.com/photo-1512411985921-b3f94791334b?q=80&w=1000&auto=format&fit=crop", text: "Nó được dùng làm ly chén, cửa kính, màn hình điện thoại và thiết bị y tế. 📱" },
+        { title: "NGUYÊN LIỆU", img: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1000&auto=format&fit=crop", text: "Nguyên liệu chính là Cát thạch anh, kết hợp với Sô-đa và Đá vôi. 🏖️" },
+        { title: "NUNG CHẢY", img: "https://images.unsplash.com/photo-1536924430914-bc169da20611?q=80&w=1000&auto=format&fit=crop", text: "Hỗn hợp được nung ở 1600 độ C để trở thành dạng lỏng nóng chảy. 🔥" },
+        { title: "TẠO HÌNH", img: "https://images.unsplash.com/photo-1578338712396-03f89025e630?q=80&w=1000&auto=format&fit=crop", text: "Người ta thổi hoặc ép khuôn thủy tinh lỏng để tạo ra những hình dáng mong muốn. 🫧" },
+        { title: "HOÀN THIỆN", img: "https://images.unsplash.com/photo-1544032449-37335606d289?q=80&w=1000&auto=format&fit=crop", text: "Sau khi làm nguội và mài bóng, chúng ta có sản phẩm thủy tinh hoàn chỉnh. ✨" },
+        { title: "TÁI CHẾ 🌱", img: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1000&auto=format&fit=crop", text: "Thủy tinh có thể tái chế vô số lần, giúp bảo vệ môi trường xanh của chúng ta! ♻️" },
+        { title: "LỜI KẾT", img: "https://i.ibb.co/zX95tGf/image-948712.jpg", text: "Cảm ơn mọi người đã lắng nghe! Chúc các bạn một ngày thật tuyệt vời! 💐" }
     ];
 
     let current = 0;
@@ -105,7 +105,7 @@
     
     document.getElementById('start-btn').onclick = () => {
         document.getElementById('overlay').style.display = 'none';
-        music.volume = 0.7; // Nhạc chuẩn 0.7 như ý Khánh
+        music.volume = 0.4; // Đã giảm tiếng nền xuống 0.4 cực êm
         music.play();
         update();
     };
