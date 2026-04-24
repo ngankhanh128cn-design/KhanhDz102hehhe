@@ -21,32 +21,29 @@
             text-align: center; z-index: 10; position: relative; border: 8px solid #fff;
         }
         
-        /* Box ảnh rộng hơn */
         .illustration-box {
-            width: 100%; height: 350px; margin: 15px 0;
+            width: 100%; height: 380px; margin: 15px 0;
             border-radius: 25px; overflow: hidden;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1); background: #fff;
         }
         .illustration-box img { width: 100%; height: 100%; object-fit: contain; }
 
-        /* Chữ tiêu đề TO */
-        h1 { color: #00838f; font-size: 2.8em; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        h1 { color: #00838f; font-size: 3em; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
         
-        /* Nội dung cực TO cho lớp dễ nhìn */
         #text-container { 
-            font-size: 1.8em; /* Tăng cỡ chữ lên rất to */
-            line-height: 1.6; 
+            font-size: 2.2em; /* Chữ siêu to cho lớp nhìn rõ */
+            line-height: 1.5; 
             color: #222; 
-            min-height: 180px; 
-            text-align: left; 
-            padding: 0 30px; 
-            font-weight: 500;
+            min-height: 160px; 
+            text-align: center; 
+            padding: 0 20px; 
+            font-weight: bold;
         }
         
         .btn-group { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
         .nav-btn {
             background: #4fc3f7; color: white; border: none; padding: 15px 45px;
-            border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.4em; transition: 0.3s;
+            border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.5em; transition: 0.3s;
             box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
         }
         .nav-btn:hover { background: #0288d1; transform: scale(1.1); }
@@ -57,7 +54,7 @@
             z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
         }
         #start-btn {
-            padding: 25px 60px; font-size: 30px; border-radius: 60px; border:none;
+            padding: 25px 60px; font-size: 35px; border-radius: 60px; border:none;
             background: #ff4081; color:white; cursor:pointer; font-weight:bold;
             box-shadow: 0 10px 25px rgba(255,64,129,0.4);
         }
@@ -66,8 +63,8 @@
 <body>
 
 <div id="overlay">
-    <div style="font-size: 100px; margin-bottom: 20px;">🦈💙</div>
-    <button id="start-btn">BẤT ĐẦU THUYẾT TRÌNH</button>
+    <div style="font-size: 100px; margin-bottom: 20px;">🐱💐</div>
+    <button id="start-btn">BẮT ĐẦU THUYẾT TRÌNH</button>
 </div>
 
 <audio id="bgMusic" loop>
@@ -86,7 +83,7 @@
         <button class="nav-btn" id="prevBtn">Quay lại</button>
         <button class="nav-btn" id="nextBtn">Tiếp theo</button>
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: #00838f; font-size: 1.2em;">Hoàng Ngân Khánh</div>
+    <div style="margin-top: 20px; font-weight: bold; color: #00838f; font-size: 1.3em;">Hoàng Ngân Khánh</div>
 </div>
 
 <script>
@@ -94,47 +91,47 @@
         { 
             title: "MỞ ĐẦU", 
             img: "https://i.ibb.co/3W6qWfD/image-958a1f.jpg",
-            text: "Xin chào thầy cô và các bạn. Mình là Hoàng Ngân Khánh. Hôm nay mình sẽ thuyết trình về quá trình sản xuất thủy tinh. Mời mọi người cùng theo dõi!" 
+            text: "Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ nói về quy trình làm ra Thủy Tinh!" 
         },
         { 
             title: "THỦY TINH LÀ GÌ?", 
-            img: "https://i.ibb.co/3ykG4S2/image-951237.png", 
-            text: "Thủy tinh là chất rắn vô định hình. Đặc điểm: Trong suốt, cứng nhưng dễ vỡ, cách điện và cách nhiệt rất tốt." 
+            img: "https://i.ibb.co/6y4t0QW/image-95153c.png", 
+            text: "Thủy tinh là chất rắn vô định hình, trong suốt, cứng nhưng dễ vỡ." 
         },
         { 
             title: "ỨNG DỤNG", 
             img: "https://i.ibb.co/h1GqXyH/image-951505.jpg",
-            text: "Thủy tinh có mặt khắp nơi: ly cốc, kính cường lực, màn hình điện thoại và các thiết bị y tế." 
+            text: "Được dùng làm ly chén, cửa kính, màn hình điện thoại và thiết bị y tế." 
         },
         { 
             title: "NGUYÊN LIỆU", 
-            img: "https://i.ibb.co/6y4t0QW/image-95153c.png",
-            text: "Gồm: Cát thạch anh, Sô-đa và Đá vôi. Có thể thêm oxit kim loại để tạo màu sắc." 
+            img: "https://i.ibb.co/Qf0h9Fz/image-9519d5.jpg",
+            text: "Nguyên liệu chính là Cát thạch anh, Sô-đa và Đá vôi nung chảy." 
         },
         { 
             title: "TRỘN & NUNG", 
-            img: "https://i.ibb.co/v3X2F3k/image-951924.jpg",
-            text: "Nguyên liệu được trộn đều rồi nung ở nhiệt độ 1400 - 1600 độ C để tạo thành thủy tinh lỏng." 
+            img: "https://i.ibb.co/L5rMhX9/image-951904.jpg",
+            text: "Hỗn hợp được trộn đều rồi nung ở 1600 độ C để trở thành thủy tinh lỏng." 
         },
         { 
             title: "TẠO HÌNH", 
-            img: "https://i.ibb.co/6NKQ09t/image-95195b.png",
-            text: "Thủy tinh lỏng được thổi, ép khuôn hoặc kéo thành kính phẳng để tạo ra các sản phẩm khác nhau." 
+            img: "https://i.ibb.co/v3X2F3k/image-951924.jpg",
+            text: "Thủy tinh lỏng được thổi hoặc ép khuôn để tạo ra những sản phẩm đẹp mắt." 
         },
         { 
-            title: "Ủ & HOÀN THIỆN", 
+            title: "HOÀN THIỆN", 
             img: "https://i.ibb.co/mHn2V9z/image-956f54.jpg",
-            text: "Sản phẩm được làm nguội từ từ (ủ), sau đó mài cạnh và kiểm tra chất lượng kỹ càng." 
+            text: "Sau khi làm nguội và mài bóng, chúng ta có những sản phẩm hoàn chỉnh." 
         },
         { 
             title: "TÁI CHẾ 🌱", 
-            img: "https://i.ibb.co/Zxbz6Q3/image-9573b3.jpg",
-            text: "Tái chế thủy tinh giúp tiết kiệm năng lượng và bảo vệ môi trường. Nó có thể tái chế vô số lần." 
+            img: "https://i.ibb.co/3ykG4S2/image-951237.png",
+            text: "Thủy tinh có thể tái chế nhiều lần giúp tiết kiệm tài nguyên môi trường." 
         },
         { 
-            title: "KẾT LUẬN", 
-            img: "https://i.ibb.co/yY1h209/image-950e73.jpg", // Ảnh cuối Gura đứng xịn
-            text: "Cảm ơn thầy cô và các bạn đã lắng nghe bài thuyết trình của mình! Chúc mọi người một ngày tốt lành!" 
+            title: "LỜI KẾT", 
+            img: "https://i.ibb.co/zX95tGf/image-948712.jpg", // Ảnh mèo cầm hoa của Khánh
+            text: "Cảm ơn mọi người đã lắng nghe! Chúc các bạn một ngày thật tuyệt vời!" 
         }
     ];
 
@@ -155,10 +152,11 @@
         document.getElementById('main-img').src = s.img;
         document.getElementById('text').innerText = s.text;
         
+        const nextBtn = document.getElementById('nextBtn');
         if (current === slides.length - 1) {
-            document.getElementById('nextBtn').classList.add('hidden');
+            nextBtn.classList.add('hidden');
         } else {
-            document.getElementById('nextBtn').classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
         }
         
         speak(s.text);
@@ -169,7 +167,8 @@
 
     document.getElementById('start-btn').onclick = () => {
         document.getElementById('overlay').style.display = 'none';
-        music.play(); // Giữ nguyên âm lượng mặc định của bạn
+        music.volume = 0.7; // Âm lượng 0.7 chuẩn ý Khánh
+        music.play();
         update(); 
     };
 </script>
