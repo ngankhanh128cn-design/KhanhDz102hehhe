@@ -11,60 +11,57 @@
             background: linear-gradient(135deg, #a2d2ff 0%, #c9bbff 100%);
             display: flex; justify-content: center; align-items: center;
         }
-        .decor { position: absolute; pointer-events: none; z-index: 1; }
-        .tree-left { bottom: -10px; left: -10px; font-size: 140px; opacity: 0.8; }
-        .tree-right { bottom: -10px; right: -10px; font-size: 110px; opacity: 0.7; }
-
         #slide-card {
             width: 95%; max-width: 900px; background: rgba(255, 255, 255, 0.98);
-            border-radius: 50px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            border-radius: 50px; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);
             text-align: center; z-index: 10; position: relative; border: 8px solid #fff;
         }
-        
         .illustration-box {
             width: 100%; height: 380px; margin: 15px 0;
-            border-radius: 25px; overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1); background: #fff;
+            border-radius: 25px; overflow: hidden; background: #fff;
+            display: flex; justify-content: center; align-items: center;
         }
-        .illustration-box img { width: 100%; height: 100%; object-fit: contain; }
-
-        h1 { color: #00838f; font-size: 3em; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        .illustration-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        h1 { color: #00838f; font-size: 2.8em; margin: 10px 0; text-transform: uppercase; }
         
         #text-container { 
-            font-size: 2.2em; /* Chữ siêu to cho lớp nhìn rõ */
-            line-height: 1.5; 
+            font-size: 2.2em; /* Chữ siêu to cho cả lớp */
+            line-height: 1.4; 
             color: #222; 
-            min-height: 160px; 
-            text-align: center; 
-            padding: 0 20px; 
-            font-weight: bold;
+            min-height: 150px; 
+            font-weight: bold; 
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .btn-group { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
         .nav-btn {
             background: #4fc3f7; color: white; border: none; padding: 15px 45px;
-            border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.5em; transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(79, 195, 247, 0.4);
+            border-radius: 40px; cursor: pointer; font-weight: bold; font-size: 1.5em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        .nav-btn:hover { background: #0288d1; transform: scale(1.1); }
+        .nav-btn:active { transform: scale(0.95); }
         .hidden { display: none !important; }
 
-        #overlay {
-            position: fixed; top:0; left:0; width:100%; height:100%; background: white;
-            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        #overlay { 
+            position: fixed; top:0; left:0; width:100%; height:100%; background: white; 
+            z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; 
         }
-        #start-btn {
-            padding: 25px 60px; font-size: 35px; border-radius: 60px; border:none;
-            background: #ff4081; color:white; cursor:pointer; font-weight:bold;
-            box-shadow: 0 10px 25px rgba(255,64,129,0.4);
+        #start-btn { 
+            padding: 25px 60px; font-size: 35px; border-radius: 60px; border:none; 
+            background: #ff4081; color:white; cursor:pointer; font-weight: bold;
         }
     </style>
 </head>
 <body>
 
 <div id="overlay">
-    <div style="font-size: 100px; margin-bottom: 20px;">🐱💐</div>
-    <button id="start-btn">BẮT ĐẦU THUYẾT TRÌNH</button>
+    <div style="font-size: 100px; margin-bottom: 20px;">🦈💙</div>
+    <p style="font-size: 20px; color: #666;">Nhấn nút để bắt đầu nhạc (0.7) và hình ảnh</p>
+    <button id="start-btn">BẮT ĐẦU ✨</button>
 </div>
 
 <audio id="bgMusic" loop>
@@ -73,64 +70,60 @@
 
 <div id="slide-card">
     <h1 id="title">Trang 1</h1>
-    <div class="illustration-box">
-        <img id="main-img" src="" alt="Minh họa">
-    </div>
-    <div id="text-container">
-        <p id="text">...</p>
-    </div>
+    <div class="illustration-box"><img id="main-img" src="" alt="Đang tải ảnh..."></div>
+    <div id="text-container"><p id="text">...</p></div>
     <div class="btn-group">
         <button class="nav-btn" id="prevBtn">Quay lại</button>
         <button class="nav-btn" id="nextBtn">Tiếp theo</button>
     </div>
-    <div style="margin-top: 20px; font-weight: bold; color: #00838f; font-size: 1.3em;">Hoàng Ngân Khánh</div>
+    <div style="margin-top: 20px; font-weight: bold; color: #00838f; font-size: 1.2em;">Hoàng Ngân Khánh</div>
 </div>
 
 <script>
     const slides = [
         { 
             title: "MỞ ĐẦU", 
-            img: "https://i.ibb.co/3W6qWfD/image-958a1f.jpg",
+            img: "https://r4.wallpaperflare.com/wallpaper/32/342/630/gawr-gura-hololive-anime-girls-shark-girl-digital-art-hd-wallpaper-d8262d98d020ec08d08c51de50f1d63d.jpg", 
             text: "Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ nói về quy trình làm ra Thủy Tinh!" 
         },
         { 
             title: "THỦY TINH LÀ GÌ?", 
-            img: "https://i.ibb.co/6y4t0QW/image-95153c.png", 
-            text: "Thủy tinh là chất rắn vô định hình, trong suốt, cứng nhưng dễ vỡ." 
+            img: "https://images.squarespace-cdn.com/content/v1/59037c8746c3c434222049e0/1572535790459-Y9R0WHLI4S6A9S1YI5H2/Glass-Molecules.jpg", 
+            text: "Thủy tinh là chất rắn vô định hình, trong suốt và cứng nhưng rất dễ vỡ." 
         },
         { 
             title: "ỨNG DỤNG", 
-            img: "https://i.ibb.co/h1GqXyH/image-951505.jpg",
-            text: "Được dùng làm ly chén, cửa kính, màn hình điện thoại và thiết bị y tế." 
+            img: "https://www.shutterstock.com/image-photo/group-empty-glass-cups-isolated-600nw-1910609653.jpg", 
+            text: "Nó được dùng làm ly chén, cửa kính, màn hình điện thoại và thiết bị y tế." 
         },
         { 
             title: "NGUYÊN LIỆU", 
-            img: "https://i.ibb.co/Qf0h9Fz/image-9519d5.jpg",
-            text: "Nguyên liệu chính là Cát thạch anh, Sô-đa và Đá vôi nung chảy." 
+            img: "https://st.depositphotos.com/1001401/2143/i/450/depositphotos_21437191-stock-photo-sand-soda-lime.jpg", 
+            text: "Nguyên liệu chính là Cát thạch anh, kết hợp với Sô-đa và Đá vôi." 
         },
         { 
-            title: "TRỘN & NUNG", 
-            img: "https://i.ibb.co/L5rMhX9/image-951904.jpg",
-            text: "Hỗn hợp được trộn đều rồi nung ở 1600 độ C để trở thành thủy tinh lỏng." 
+            title: "NUNG CHẢY", 
+            img: "https://www.agc-glass.eu/sites/default/files/styles/node_image_full/public/kiln.jpg", 
+            text: "Hỗn hợp được nung ở 1600 độ C để trở thành dạng lỏng nóng chảy." 
         },
         { 
             title: "TẠO HÌNH", 
-            img: "https://i.ibb.co/v3X2F3k/image-951924.jpg",
-            text: "Thủy tinh lỏng được thổi hoặc ép khuôn để tạo ra những sản phẩm đẹp mắt." 
+            img: "https://www.glass-international.com/images/forming.jpg", 
+            text: "Người ta thổi hoặc ép khuôn thủy tinh lỏng để tạo ra những hình dáng mong muốn." 
         },
         { 
             title: "HOÀN THIỆN", 
-            img: "https://i.ibb.co/mHn2V9z/image-956f54.jpg",
-            text: "Sau khi làm nguội và mài bóng, chúng ta có những sản phẩm hoàn chỉnh." 
+            img: "https://i.pinimg.com/736x/8b/6e/51/8b6e51e7379796f62b21c430932d0e16.jpg", 
+            text: "Sau khi làm nguội và mài bóng, chúng ta có sản phẩm thủy tinh hoàn chỉnh." 
         },
         { 
             title: "TÁI CHẾ 🌱", 
-            img: "https://i.ibb.co/3ykG4S2/image-951237.png",
-            text: "Thủy tinh có thể tái chế nhiều lần giúp tiết kiệm tài nguyên môi trường." 
+            img: "https://images.immediate.co.uk/production/volatile/sites/4/2021/04/GettyImages-1215160010-098555e.jpg", 
+            text: "Thủy tinh có thể tái chế vô số lần, giúp bảo vệ môi trường xanh của chúng ta!" 
         },
         { 
             title: "LỜI KẾT", 
-            img: "https://i.ibb.co/zX95tGf/image-948712.jpg", // Ảnh mèo cầm hoa của Khánh
+            img: "https://i.ibb.co/xL5K4X2/image-950e73.jpg", 
             text: "Cảm ơn mọi người đã lắng nghe! Chúc các bạn một ngày thật tuyệt vời!" 
         }
     ];
@@ -142,7 +135,7 @@
         window.speechSynthesis.cancel();
         const msg = new SpeechSynthesisUtterance(txt);
         msg.lang = 'vi-VN';
-        msg.rate = 1.3; 
+        msg.rate = 1.2;
         window.speechSynthesis.speak(msg);
     }
 
@@ -152,24 +145,20 @@
         document.getElementById('main-img').src = s.img;
         document.getElementById('text').innerText = s.text;
         
-        const nextBtn = document.getElementById('nextBtn');
-        if (current === slides.length - 1) {
-            nextBtn.classList.add('hidden');
-        } else {
-            nextBtn.classList.remove('hidden');
-        }
+        // Hiện/Ẩn nút Tiếp theo ở trang cuối
+        document.getElementById('nextBtn').classList.toggle('hidden', current === slides.length - 1);
         
         speak(s.text);
     }
 
     document.getElementById('nextBtn').onclick = () => { if(current < slides.length-1) { current++; update(); } };
     document.getElementById('prevBtn').onclick = () => { if(current > 0) { current--; update(); } };
-
+    
     document.getElementById('start-btn').onclick = () => {
         document.getElementById('overlay').style.display = 'none';
-        music.volume = 0.7; // Âm lượng 0.7 chuẩn ý Khánh
+        music.volume = 0.7; // Nhạc chuẩn 0.7
         music.play();
-        update(); 
+        update();
     };
 </script>
 </body>
