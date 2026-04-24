@@ -14,31 +14,24 @@ body, html {
     display: flex; justify-content: center; align-items: center;
 }
 
-/* ☁️ MÂY */
+/* ☁️ mây */
 .decor { position: absolute; pointer-events: none; z-index: 1; }
-.cloud {
-    font-size: 60px;
-    opacity: 0.7;
-    animation: moveCloud 25s linear infinite;
-}
-@keyframes moveCloud {
-    from { transform: translateX(-100vw); }
-    to { transform: translateX(100vw); }
-}
+.cloud { font-size: 60px; opacity: 0.7; animation: moveCloud 25s linear infinite; }
+@keyframes moveCloud { from { transform: translateX(-100vw);} to {transform: translateX(100vw);} }
 
-/* 🌿 CÂY */
+/* 🌿 cây */
 .tree-left { bottom: -10px; left: -10px; font-size: 140px; }
 .tree-right { bottom: -10px; right: -10px; font-size: 110px; }
 
-/* 🐰 ICON TRANG TRÍ */
-.cute { position: absolute; font-size: 40px; opacity: 0.9; }
+/* 🐰 icon */
+.cute { position: absolute; font-size: 35px; }
 .rabbit { top: 10%; left: 5%; }
 .cat { bottom: 15%; right: 10%; }
-.leaf { top: 40%; left: 90%; }
+.leaf { top: 40%; right: 5%; }
 
-/* CARD */
+/* card */
 #slide-card {
-    width: 95%; max-width: 900px;
+    width: 95%; max-width: 950px;
     background: white;
     border-radius: 40px;
     padding: 30px;
@@ -50,16 +43,11 @@ body, html {
     height: 350px;
     display: flex; justify-content: center; align-items: center;
 }
-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-}
+img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
 
 h1 { color: #00838f; }
-#text { font-size: 22px; font-weight: bold; }
+#text { font-size: 20px; font-weight: bold; line-height: 1.5; }
 
-/* BUTTON */
 button {
     padding: 12px 30px;
     margin: 10px;
@@ -71,7 +59,7 @@ button {
     cursor: pointer;
 }
 
-/* OVERLAY */
+/* overlay */
 #overlay {
     position: fixed;
     width: 100%; height: 100%;
@@ -80,7 +68,6 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
 }
 
 #start-btn {
@@ -95,58 +82,104 @@ button {
 
 <body>
 
-<!-- ☁️ MÂY -->
 <div class="decor cloud" style="top:10%;">☁️</div>
 <div class="decor cloud" style="top:25%; animation-delay:-7s;">☁️</div>
 <div class="decor cloud" style="top:15%; animation-delay:-15s;">☁️</div>
 
-<!-- 🌿 CÂY -->
 <div class="decor tree-left">🌿</div>
 <div class="decor tree-right">🌴</div>
 
-<!-- 🐰 ICON -->
 <div class="cute rabbit">🐰</div>
 <div class="cute cat">🐱</div>
 <div class="cute leaf">🍃</div>
 
-<!-- OVERLAY -->
 <div id="overlay">
     <div style="font-size:100px;">🦈💐</div>
     <button id="start-btn">BẮT ĐẦU ✨</button>
 </div>
 
-<!-- NHẠC -->
 <audio id="bgMusic" loop>
-    <source src="nhac.mp3" type="audio/mpeg">
+    <source src="Đã Lỡ Yêu Em Nhiều.mp3" type="audio/mpeg">
 </audio>
 
-<!-- SLIDE -->
 <div id="slide-card">
     <h1 id="title"></h1>
-
     <div class="illustration-box">
         <img id="img">
     </div>
-
     <p id="text"></p>
 
     <button id="prevBtn">⟵ Quay lại</button>
     <button id="nextBtn">Tiếp theo ⟶</button>
 
-    <p>Ngân Khánh 🦈</p>
+    <p>Hoàng Ngân Khánh 🦈</p>
 </div>
 
 <script>
 const slides = [
-{title:"MỞ ĐẦU 🐰", img:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Glass_objects.jpg", text:"Chào thầy cô và các bạn :3 mình là Ngân Khánh!"},
-{title:"THỦY TINH 🐱", img:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Glass_chemical_structure.png", text:"Thủy tinh là chất rắn trong suốt nhưng dễ vỡ :>"},
-{title:"ỨNG DỤNG 🍃", img:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Glassware.jpg", text:"Dùng làm ly, kính, điện thoại."},
-{title:"NGUYÊN LIỆU 🌿", img:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Sand_dunes.jpg", text:"Cát, sô-đa, đá vôi."},
-{title:"NUNG 🔥", img:"https://upload.wikimedia.org/wikipedia/commons/5/5d/Glass_furnace.jpg", text:"Nung ở nhiệt độ cao."},
-{title:"TẠO HÌNH 🫧", img:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Glassblowing.jpg", text:"Thổi hoặc ép khuôn."},
-{title:"HOÀN THIỆN ✨", img:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Glass_polishing.jpg", text:"Làm nguội và mài bóng."},
-{title:"TÁI CHẾ ♻️", img:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Glass_recycling.jpg", text:"Có thể tái chế nhiều lần."},
-{title:"KẾT 💐", img:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Glass_cups.jpg", text:"Cảm ơn mọi người đã lắng nghe :3"}
+
+{title:"MỞ ĐẦU 🐰", img:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Glass_objects.jpg",
+text:`Xin chào thầy cô và các bạn.
+Hôm nay, mình là Hoàng Ngân Khánh. Mình xin trình bày về quá trình sản xuất thủy tinh – một vật liệu quen thuộc mà chúng ta sử dụng hằng ngày, từ chiếc cốc uống nước cho đến màn hình điện thoại.
+
+Nhưng ít ai biết rằng, để tạo ra thủy tinh, người ta phải trải qua một quy trình rất công phu, bắt đầu từ những nguyên liệu tự nhiên như cát.`},
+
+{title:"THỦY TINH 🐱", img:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Glass_chemical_structure.png",
+text:`Thủy tinh là một chất rắn vô định hình, nghĩa là các phân tử không sắp xếp theo trật tự cố định như tinh thể.
+
+Nó có đặc điểm: trong suốt, có thể tạo hình khi nóng, cứng nhưng dễ vỡ.
+
+Ngoài ra, thủy tinh còn cách điện và cách nhiệt tốt.`},
+
+{title:"ỨNG DỤNG 🍃", img:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Glassware.jpg",
+text:`Thủy tinh có mặt ở khắp nơi:
+
+Trong gia đình: ly, cốc, chai nước.
+Trong xây dựng: kính cửa, kính cường lực.
+Trong công nghệ: màn hình điện thoại.
+Trong y tế: ống nghiệm.`},
+
+{title:"NGUYÊN LIỆU 🌿", img:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Sand_dunes.jpg",
+text:`Nguyên liệu chính gồm:
+
+Cát thạch anh chiếm khoảng 70%.
+Sô-đa giúp giảm nhiệt độ nóng chảy.
+Đá vôi giúp tăng độ bền.
+
+Ngoài ra còn có chất tạo màu và thủy tinh tái chế.`},
+
+{title:"TRỘN 🐰", img:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Sand_dunes.jpg",
+text:`Các nguyên liệu được cân theo tỉ lệ rồi trộn đều.
+
+Nếu sai tỉ lệ, thủy tinh có thể bị đục hoặc kém bền.`},
+
+{title:"NUNG 🔥", img:"https://upload.wikimedia.org/wikipedia/commons/5/5d/Glass_furnace.jpg",
+text:`Hỗn hợp được nung ở 1400 đến 1600 độ C.
+
+Các chất nóng chảy và phản ứng tạo thành thủy tinh lỏng.`},
+
+{title:"TẠO HÌNH 🫧", img:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Glassblowing.jpg",
+text:`Có nhiều cách tạo hình:
+
+Thổi thủy tinh, ép khuôn hoặc kéo kính phẳng.
+
+Mỗi cách tạo ra sản phẩm khác nhau.`},
+
+{title:"Ủ ❄️", img:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Glass_polishing.jpg",
+text:`Thủy tinh được làm nguội từ từ để tránh nứt vỡ.
+
+Quá trình này giúp tăng độ bền.`},
+
+{title:"HOÀN THIỆN ✨", img:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Glass_polishing.jpg",
+text:`Sản phẩm được cắt, mài, đánh bóng và kiểm tra chất lượng.`},
+
+{title:"TÁI CHẾ ♻️", img:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Glass_recycling.jpg",
+text:`Thủy tinh có thể tái chế nhiều lần giúp bảo vệ môi trường.`},
+
+{title:"KẾT 💐", img:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Glass_cups.jpg",
+text:`Từ cát, con người tạo ra thủy tinh – một vật liệu rất quan trọng.
+
+Cảm ơn thầy cô và các bạn đã lắng nghe!`}
 ];
 
 let current = 0;
@@ -156,6 +189,7 @@ function speak(text){
     speechSynthesis.cancel();
     let msg = new SpeechSynthesisUtterance(text);
     msg.lang = "vi-VN";
+    msg.rate = 1;
     speechSynthesis.speak(msg);
 }
 
@@ -173,7 +207,7 @@ document.getElementById("prevBtn").onclick = ()=>{ if(current>0){current--;show(
 document.getElementById("start-btn").onclick = ()=>{
     document.getElementById("overlay").style.display="none";
     music.volume = 0.4;
-    music.play();
+    music.play().catch(()=>{});
     show();
 };
 </script>
