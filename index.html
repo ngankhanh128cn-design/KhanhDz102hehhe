@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quá trình sản xuất Thủy tinh - Hoàng Ngân Khánh</title>
+    <style>
+        :root {
+            --bg-blue: #a2d2ff;
+            --bg-pink: #ffafbd;
+            --bg-purple: #c9bbff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 3s ease;
+            background: linear-gradient(45deg, var(--bg-blue), var(--bg-pink), var(--bg-purple));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Stickers bay */
+        .sticker {
+            position: absolute;
+            font-size: 30px;
+            pointer-events: none;
+            z-index: 1;
+            animation: fly linear infinite;
+        }
+
+        @keyframes fly {
+            from { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Khung nội dung */
+        #slide-container {
+            width: 80%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            z-index: 10;
+            position: relative;
+        }
+
+        h1 { color: #d63384; font-size: 2.5em; margin-bottom: 20px; }
+        p { color: #333; font-size: 1.4em; line-height: 1.6; min-height: 150px; }
+        .author { font-weight: bold; color: #6f42c1; margin-top: 20px; }
+
+        /* Nút điều hướng */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .nav-btn:hover { background: #f0f0f0; transform: translateY(-50%) scale(1.1); }
+        #prevBtn { left: -80px; }
+        #nextBtn { right: -80px; }
+
+        .controls { margin-top: 30px; position: relative; }
+
+        /* Nút bắt đầu (để trình duyệt cho phép phát âm thanh) */
+        #start-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; z-index: 1000; display: flex;
+            justify-content: center; align-items: center;
+        }
+        #start-btn {
+            padding: 20px 40px; font-size: 24px; border-radius: 50px;
+            background: #d63384; color: white; border: none; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="start-overlay">
+        <button id="start-btn">Click để bắt đầu thuyết trình 🎬</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="nhac_nen.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="slide-container">
+        <button class="nav-btn" id="prevBtn">⬅️</button>
+        <button class="nav-btn" id="nextBtn">➡️</button>
+        
+        <div id="content">
+            <h1 id="title">Đang tải...</h1>
+            <p id="text"></p>
+            <div class="author">Thành viên: Hoàng Ngân Khánh</div>
+        </div>
+    </div>
+
+    <script>
+        const slides = [
+            {
+                title: "TRANG 1 – MỞ ĐẦU",
+                text: "Xin chào thầy cô và các bạn. Hôm nay, mình là Hoàng Ngân Khánh. Mình xin trình bày về quá trình sản xuất thủy tinh – một vật liệu quen thuộc mà chúng ta sử dụng hằng ngày, từ chiếc cốc uống nước cho đến màn hình điện thoại. Nhưng ít ai biết rằng, để tạo ra thủy tinh, người ta phải trải qua một quy trình rất công phu, từ những nguyên liệu tự nhiên như cát."
+            },
+            {
+                title: "TRANG 2 – THỦY TINH LÀ GÌ?",
+                text: "Thủy tinh là một chất rắn vô định hình, nghĩa là các phân tử không sắp xếp theo trật tự cố định. Đặc điểm: Trong suốt, có thể uốn khi nóng, cứng nhưng dễ vỡ. Ngoài ra còn cách điện và cách nhiệt tốt."
+            },
+            {
+                title: "TRANG 3 – ỨNG DỤNG",
+                text: "Thủy tinh xuất hiện khắp nơi: Gia đình (ly, bát), Xây dựng (kính), Công nghệ (màn hình điện thoại), Y tế (ống nghiệm). Đây là vật liệu vô cùng quan trọng."
+            },
+            {
+                title: "TRANG 4 – NGUYÊN LIỆU",
+                text: "Gồm: Cát thạch anh (chiếm 70-75%), Sô-đa (giúp giảm nhiệt độ nóng chảy) và Đá vôi (tăng độ bền). Có thể thêm Oxit kim loại để tạo màu."
+            },
+            {
+                title: "TRANG 5 – TRỘN NGUYÊN LIỆU",
+                text: "Các nguyên liệu được cân theo tỉ lệ chính xác và trộn đều. Nếu sai tỉ lệ, thủy tinh sẽ bị đục hoặc không bền."
+            },
+            {
+                title: "TRANG 6 – NUNG CHẢY",
+                text: "Hỗn hợp được nung ở 1400 đến 1600 độ C. Cát và các chất khác nóng chảy hoàn toàn tạo thành thủy tinh lỏng."
+            },
+            {
+                title: "TRANG 7 – TẠO HÌNH",
+                text: "Thủy tinh lỏng được tạo hình bằng cách: Thổi (chai lọ), Ép khuôn, hoặc Kéo kính phẳng (cửa sổ)."
+            },
+            {
+                title: "TRANG 8 – Ủ (LÀM NGUỘI)",
+                text: "Thủy tinh được làm nguội từ từ. Nếu nguội quá nhanh sẽ bị nứt vỡ. Quá trình ủ giúp tăng độ bền."
+            },
+            {
+                title: "TRANG 9 – HOÀN THIỆN",
+                text: "Sản phẩm được cắt, mài, đánh bóng và kiểm tra chất lượng. Có thể tôi nhiệt thành kính cường lực."
+            },
+            {
+                title: "TRANG 10 – BẢO VỆ MÔI TRƯỜNG",
+                text: "Việc tái chế thủy tinh giúp giảm rác thải, tiết kiệm nguyên liệu và năng lượng. Thủy tinh có thể tái chế vô hạn lần."
+            },
+            {
+                title: "TRANG 11 – KẾT LUẬN",
+                text: "Từ cát đơn giản, con người đã tạo ra thủy tinh kỳ diệu. Cảm ơn thầy cô và các bạn đã lắng nghe!"
+            }
+        ];
+
+        let currentSlide = 0;
+        const stickers = ["🐧","🐰","💖","🌺","❤","🍀","💟","🙀","👻","💦","😺","🐴","👹","🗿","🤗","🐇","🍃","👿","🤓","🍂","😇","😡"];
+
+        // Hàm tạo sticker bay
+        function createSticker() {
+            const s = document.createElement('div');
+            s.className = 'sticker';
+            s.innerText = stickers[Math.floor(Math.random() * stickers.length)];
+            s.style.left = Math.random() * 100 + "vw";
+            s.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 5000);
+        }
+        setInterval(createSticker, 500);
+
+        // Hàm đọc văn bản
+        function speak(text) {
+            window.speechSynthesis.cancel(); // Dừng câu cũ
+            const msg = new SpeechSynthesisUtterance(text);
+            msg.lang = 'vi-VN';
+            msg.rate = 0.9; // Tốc độ vừa phải
+            msg.pitch = 1.1; 
+            window.speechSynthesis.speak(msg);
+        }
+
+        function updateSlide() {
+            const slide = slides[currentSlide];
+            document.getElementById('title').innerText = slide.title;
+            document.getElementById('text').innerText = slide.text;
+            speak(slide.text);
+        }
+
+        // Điều khiển
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        // Nút Start
+        document.getElementById('start-btn').addEventListener('click', () => {
+            document.getElementById('start-overlay').style.display = 'none';
+            const music = document.getElementById('bgMusic');
+            music.volume = 0.2; // Nhạc bé
+            music.play();
+            updateSlide();
+        });
+    </script>
+</body>
+</html>
