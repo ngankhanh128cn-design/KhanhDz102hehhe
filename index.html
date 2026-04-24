@@ -14,27 +14,52 @@ body, html {
     display: flex; justify-content: center; align-items: center;
 }
 
-.decor { position: absolute; pointer-events: none; }
-.cloud { font-size: 60px; opacity: 0.7; animation: move 25s linear infinite; }
-@keyframes move { from { transform: translateX(-100vw);} to {transform: translateX(100vw);} }
+/* ☁️ MÂY */
+.decor { position: absolute; pointer-events: none; z-index: 1; }
+.cloud {
+    font-size: 60px;
+    opacity: 0.7;
+    animation: moveCloud 25s linear infinite;
+}
+@keyframes moveCloud {
+    from { transform: translateX(-100vw); }
+    to { transform: translateX(100vw); }
+}
 
+/* 🌿 CÂY */
+.tree-left { bottom: -10px; left: -10px; font-size: 140px; }
+.tree-right { bottom: -10px; right: -10px; font-size: 110px; }
+
+/* 🐰 ICON TRANG TRÍ */
+.cute { position: absolute; font-size: 40px; opacity: 0.9; }
+.rabbit { top: 10%; left: 5%; }
+.cat { bottom: 15%; right: 10%; }
+.leaf { top: 40%; left: 90%; }
+
+/* CARD */
 #slide-card {
-    width: 90%; max-width: 900px;
+    width: 95%; max-width: 900px;
     background: white;
     border-radius: 40px;
     padding: 30px;
     text-align: center;
+    z-index: 10;
 }
 
 .illustration-box {
     height: 350px;
     display: flex; justify-content: center; align-items: center;
 }
-img { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
 
 h1 { color: #00838f; }
 #text { font-size: 22px; font-weight: bold; }
 
+/* BUTTON */
 button {
     padding: 12px 30px;
     margin: 10px;
@@ -46,6 +71,7 @@ button {
     cursor: pointer;
 }
 
+/* OVERLAY */
 #overlay {
     position: fixed;
     width: 100%; height: 100%;
@@ -54,6 +80,7 @@ button {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1000;
 }
 
 #start-btn {
@@ -68,15 +95,32 @@ button {
 
 <body>
 
+<!-- ☁️ MÂY -->
+<div class="decor cloud" style="top:10%;">☁️</div>
+<div class="decor cloud" style="top:25%; animation-delay:-7s;">☁️</div>
+<div class="decor cloud" style="top:15%; animation-delay:-15s;">☁️</div>
+
+<!-- 🌿 CÂY -->
+<div class="decor tree-left">🌿</div>
+<div class="decor tree-right">🌴</div>
+
+<!-- 🐰 ICON -->
+<div class="cute rabbit">🐰</div>
+<div class="cute cat">🐱</div>
+<div class="cute leaf">🍃</div>
+
+<!-- OVERLAY -->
 <div id="overlay">
     <div style="font-size:100px;">🦈💐</div>
     <button id="start-btn">BẮT ĐẦU ✨</button>
 </div>
 
+<!-- NHẠC -->
 <audio id="bgMusic" loop>
-    <source src="Đã Lỡ Yêu Em Nhiều.mp3" type="audio/mpeg">
+    <source src="nhac.mp3" type="audio/mpeg">
 </audio>
 
+<!-- SLIDE -->
 <div id="slide-card">
     <h1 id="title"></h1>
 
@@ -94,25 +138,24 @@ button {
 
 <script>
 const slides = [
-{title:"MỞ ĐẦU", img:"https://picsum.photos/1000/400?1", text:"Chào thầy cô và các bạn, mình là Ngân Khánh. Hôm nay mình sẽ nói về thủy tinh!"},
-{title:"THỦY TINH LÀ GÌ?", img:"https://picsum.photos/1000/400?2", text:"Thủy tinh là chất rắn trong suốt, cứng nhưng dễ vỡ."},
-{title:"ỨNG DỤNG", img:"https://picsum.photos/1000/400?3", text:"Dùng làm ly, cửa kính, điện thoại."},
-{title:"NGUYÊN LIỆU", img:"https://picsum.photos/1000/400?4", text:"Cát, sô-đa và đá vôi."},
-{title:"NUNG CHẢY", img:"https://picsum.photos/1000/400?5", text:"Nung ở 1600°C để tạo thủy tinh lỏng."},
-{title:"TẠO HÌNH", img:"https://picsum.photos/1000/400?6", text:"Thổi hoặc ép để tạo hình."},
-{title:"HOÀN THIỆN", img:"https://picsum.photos/1000/400?7", text:"Làm nguội và mài bóng."},
-{title:"TÁI CHẾ", img:"https://picsum.photos/1000/400?8", text:"Có thể tái chế nhiều lần."},
-{title:"LỜI KẾT", img:"https://picsum.photos/1000/400?9", text:"Cảm ơn mọi người đã lắng nghe!"}
+{title:"MỞ ĐẦU 🐰", img:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Glass_objects.jpg", text:"Chào thầy cô và các bạn :3 mình là Ngân Khánh!"},
+{title:"THỦY TINH 🐱", img:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Glass_chemical_structure.png", text:"Thủy tinh là chất rắn trong suốt nhưng dễ vỡ :>"},
+{title:"ỨNG DỤNG 🍃", img:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Glassware.jpg", text:"Dùng làm ly, kính, điện thoại."},
+{title:"NGUYÊN LIỆU 🌿", img:"https://upload.wikimedia.org/wikipedia/commons/8/8c/Sand_dunes.jpg", text:"Cát, sô-đa, đá vôi."},
+{title:"NUNG 🔥", img:"https://upload.wikimedia.org/wikipedia/commons/5/5d/Glass_furnace.jpg", text:"Nung ở nhiệt độ cao."},
+{title:"TẠO HÌNH 🫧", img:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Glassblowing.jpg", text:"Thổi hoặc ép khuôn."},
+{title:"HOÀN THIỆN ✨", img:"https://upload.wikimedia.org/wikipedia/commons/1/1b/Glass_polishing.jpg", text:"Làm nguội và mài bóng."},
+{title:"TÁI CHẾ ♻️", img:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Glass_recycling.jpg", text:"Có thể tái chế nhiều lần."},
+{title:"KẾT 💐", img:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Glass_cups.jpg", text:"Cảm ơn mọi người đã lắng nghe :3"}
 ];
 
 let current = 0;
 const music = document.getElementById("bgMusic");
 
 function speak(text){
-    window.speechSynthesis.cancel();
+    speechSynthesis.cancel();
     let msg = new SpeechSynthesisUtterance(text);
     msg.lang = "vi-VN";
-    msg.rate = 1.1;
     speechSynthesis.speak(msg);
 }
 
@@ -124,13 +167,8 @@ function show(){
     speak(s.text);
 }
 
-document.getElementById("nextBtn").onclick = ()=>{
-    if(current < slides.length-1){ current++; show(); }
-};
-
-document.getElementById("prevBtn").onclick = ()=>{
-    if(current > 0){ current--; show(); }
-};
+document.getElementById("nextBtn").onclick = ()=>{ if(current<slides.length-1){current++;show();}};
+document.getElementById("prevBtn").onclick = ()=>{ if(current>0){current--;show();}};
 
 document.getElementById("start-btn").onclick = ()=>{
     document.getElementById("overlay").style.display="none";
